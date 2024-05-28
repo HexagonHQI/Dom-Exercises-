@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing the Article</title>
+    <style>
+        /* Bonus: Optional styling for hover effects */
+        h1:hover {
+            font-size: calc(100px * random(0, 1));
+        }
+        p:nth-child(2) {
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        p:nth-child(2):hover {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <article id="article">
+        <h1> Some Facts </h1>
+        <h2> The Chocolate </h2>
+        <h3> History of the chocolate </h3>
+        <p> Chocolate is made from tropical Theobroma cacao tree seeds. 
+        Its earliest use dates back to the Olmec civilization in Mesoamerica.</p>
+        <p> After the European discovery of the Americas, chocolate became 
+        very popular in the wider world, and its demand exploded. </p>
+        <p> Chocolate has since become a popular food product that millions enjoy every day, 
+        thanks to its unique, rich, and sweet taste.</p> 
+    </article>
+    <button id="boldButton">Make Paragraphs Bold</button>
+
+    <script>
+        const article = document.getElementById("article");
+
+        // Get the h1 element
+        const title = article.querySelector("h1");
+        console.log(title); // This will log the content of the h1 tag
+
+        // Remove the last paragraph
+        article.lastChild.remove();
+
+        // Change h2 background color on click
+        const h2 = article.querySelector("h2");
+        h2.addEventListener("click", () => {
+            h2.style.backgroundColor = "red";
+        });
+
+        // Hide h3 on click
+        const h3 = article.querySelector("h3");
+        h3.addEventListener("click", () => {
+            h3.style.display = "none";
+        });
+
+        // Make paragraphs bold on button click
+        const button = document.getElementById("boldButton");
+        button.addEventListener("click", () => {
+            const paragraphs = article.querySelectorAll("p");
+            paragraphs.forEach(paragraph => paragraph.style.fontWeight = "bold");
+        });
+    </script>
+</body>
+</html>

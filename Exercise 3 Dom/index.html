@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform the Sentence</title>
+</head>
+<body>
+    <p><strong>Hello</strong> I hope you are enjoying <strong>this</strong> class. At the
+    <strong>end</strong> you <strong>will</strong> be great Developers!
+    <strong>Enjoy</strong> the <strong>JavaScript </strong> lessons</p>
+
+    <script>
+       let allBoldItems; // Global variable to store bold elements
+
+function getBoldItems() {
+  const paragraph = document.querySelector("p");
+  allBoldItems = paragraph.querySelectorAll("strong"); // Get all bold elements
+}
+
+function highlight() {
+  allBoldItems.forEach(item => item.style.color = "blue"); // Change color to blue
+}
+
+function returnItemsToDefault() {
+  allBoldItems.forEach(item => item.style.color = "black"); // Change color back to black
+}
+
+getBoldItems(); // Call getBoldItems on page load to collect bold elements
+
+const paragraph = document.querySelector("p");
+
+paragraph.addEventListener("mouseover", highlight);
+paragraph.addEventListener("mouseout", returnItemsToDefault);
+
+    </script>
+</body>
+</html>

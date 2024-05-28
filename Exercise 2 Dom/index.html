@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Handling</title>
+</head>
+<body>
+    <form id="userForm">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="firstname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lastname"><br><br>
+        <input type="submit" value="Submit" id="submit">
+    </form>
+    <ul class="usersAnswer"></ul>
+
+    <script>
+        // Retrieve the form element
+        const form = document.getElementById("userForm");
+        console.log(form);
+
+        // Retrieve inputs by ID
+        const firstNameInput = document.getElementById("fname");
+        const lastNameInput = document.getElementById("lname");
+        console.log(firstNameInput);
+        console.log(lastNameInput);
+
+        // Retrieve inputs by name (might return an array if multiple elements have the same name)
+        const nameInputs = document.getElementsByName("firstname"); // Might return an array
+        console.log(nameInputs); // Might print an array for "firstname"
+
+        // Add submit event listener
+        form.addEventListener("submit", (event) => {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            // Get input values
+            const firstName = firstNameInput.value;
+            const lastName = lastNameInput.value;
+
+            // Check if inputs are empty
+            if (firstName && lastName) {
+                // Create list items
+                const firstNameLI = document.createElement("li");
+                firstNameLI.textContent = `First name: ${firstName}`;
+
+                const lastNameLI = document.createElement("li");
+                lastNameLI.textContent = `Last name: ${lastName}`;
+
+                // Append list items to the answer list
+                const answerList = document.querySelector(".usersAnswer");
+                answerList.appendChild(firstNameLI);
+                answerList.appendChild(lastNameLI);
+            } else {
+                alert("Please enter both first and last name!");
+            }
+        });
+    </script>
+</body>
+</html>
